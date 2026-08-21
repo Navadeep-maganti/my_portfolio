@@ -1,19 +1,16 @@
 # Navadeep Maganti - Portfolio
 
-A modern developer portfolio built with React, TypeScript, Vite, React Router, Three.js, Framer Motion, and custom CSS. The site highlights my engineering background, featured projects, collaboration ideas, LeetCode activity, and contact information.
+I build what I wish existed.
 
-## Overview
+I am a Computer Science student interested in turning real-world problems into practical software solutions. Most of my projects begin as a simple "what if?": identifying something that could work better, exploring how technology could help, and gradually shaping that idea into a system that can actually be built.
 
-This portfolio is designed as a routed multi-page application with a polished dark interface, interactive visuals, responsive layouts, and project-focused storytelling.
+My interests span full-stack development, AI/ML, intelligent automation, and system design, with a focus on building useful products rather than just demonstrating technologies.
 
-## Pages
+I am still learning, experimenting, and occasionally overcomplicating ideas before figuring out how to simplify them, but that is also what makes building them interesting.
 
-- Home: hero section, quick profile summary, and navigation into key areas
-- About: education, skills, experience, achievements, and leadership
-- Projects: featured engineering projects with GitHub and live demo links
-- Ideas: collaboration-ready product ideas open for discussion and contribution
-- LeetCode: problem-solving metrics and algorithmic focus areas
-- Contact: email, phone, quick contact cards, and a mailto-powered message composer
+## About This Portfolio
+
+A modern routed portfolio built with React, TypeScript, Vite, React Router, Three.js, Framer Motion, and custom CSS. It highlights my background, projects, collaboration ideas, LeetCode activity, and contact information.
 
 ## Featured Projects
 
@@ -61,7 +58,7 @@ I am open to collaborating with builders interested in AI/ML, healthcare technol
 - Vanilla CSS
 - Oxlint
 
-## Getting Started
+## Run Locally
 
 Install dependencies:
 
@@ -91,17 +88,6 @@ Run linting:
 
 ```bash
 npm run lint
-```
-
-## Project Structure
-
-```text
-src/
-  components/        Reusable portfolio sections and UI components
-  data/              Portfolio content and project data
-  assets/            Local visual assets
-  App.tsx            Layout, routes, footer, and shared overlays
-  main.tsx           React Router and app bootstrap
 ```
 
 ## Contact

@@ -114,7 +114,7 @@ function App() {
               <Sparkles size={16} className="text-cyan" />
               <span>{portfolioData.name}</span>
             </span>
-            <p className="footer-tagline">Systems Engineer & Software Developer &bull; NIT Andhra Pradesh</p>
+            <p className="footer-tagline">Computer Science Student & Builder &bull; NIT Andhra Pradesh</p>
           </div>
 
           <div className="footer-links">

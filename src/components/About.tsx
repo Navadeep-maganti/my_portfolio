@@ -165,7 +165,7 @@ export const About: React.FC = () => {
           <div className="glass-card bio-card">
             <div className="card-title-group">
               <Sparkles size={20} className="text-purple" />
-              <h3>Engineering Philosophy</h3>
+              <h3>About Me</h3>
             </div>
             <p className="bio-text">{bio}</p>
           </div>

@@ -101,15 +101,15 @@ export interface PortfolioData {
 
 export const portfolioData: PortfolioData = {
   name: "Navadeep Maganti",
-  title: "Systems Engineer & Software Developer",
+  title: "I Build What I Wish Existed",
   roles: [
-    "Systems Engineer",
-    "Full-Stack Developer",
-    "B.Tech CSE @ NIT Andhra Pradesh",
-    "Algorithmic Problem Solver"
+    "Building Ideas Into Real-World Systems",
+    "Exploring Software, AI & System Design",
+    "Turning Real Problems Into Practical Products",
+    "B.Tech CSE @ NIT Andhra Pradesh"
   ],
-  subTitle: "Computer Science Undergraduate at NIT Andhra Pradesh with a strong foundation in backend architectures, distributed systems, and algorithmic problem solving.",
-  bio: "I am a Computer Science undergraduate at the National Institute of Technology, Andhra Pradesh with deep foundations in data structures, algorithms, and backend application development. I specialize in engineering scalable web services, architecting RESTful APIs, and solving complex algorithmic challenges. Passionate about building robust systems that perform reliably under heavy workloads.",
+  subTitle: "A Computer Science student exploring software, AI, and system design by turning interesting problems into practical products.",
+  bio: "I like building things that start with a \"what if?\" I am a Computer Science student interested in turning real-world problems into practical software solutions. Most of my projects begin as ideas: noticing something that could work better, exploring how technology could help, and gradually shaping that idea into a system that can actually be built. My interests span full-stack development, AI/ML, intelligent automation, and system design, with a focus on useful products rather than just demonstrating technologies. I am still learning, experimenting, and occasionally overcomplicating ideas before figuring out how to simplify them, but that is also what makes building them interesting.",
   email: "magantinavadeep@gmail.com",
   phone: "+91 9494463809",
   studentEmail: "424151@student.nitandhra.ac.in",
