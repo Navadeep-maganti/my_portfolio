@@ -1,32 +1,112 @@
-# React + TypeScript + Vite
+# Navadeep Maganti - Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A modern developer portfolio built with React, TypeScript, Vite, React Router, Three.js, Framer Motion, and custom CSS. The site highlights my engineering background, featured projects, collaboration ideas, LeetCode activity, and contact information.
 
-Currently, two official plugins are available:
+## Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+This portfolio is designed as a routed multi-page application with a polished dark interface, interactive visuals, responsive layouts, and project-focused storytelling.
 
-## React Compiler
+## Pages
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Home: hero section, quick profile summary, and navigation into key areas
+- About: education, skills, experience, achievements, and leadership
+- Projects: featured engineering projects with GitHub and live demo links
+- Ideas: collaboration-ready product ideas open for discussion and contribution
+- LeetCode: problem-solving metrics and algorithmic focus areas
+- Contact: email, phone, quick contact cards, and a mailto-powered message composer
 
-## Expanding the Oxlint configuration
+## Featured Projects
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+### TestDoc Pro - Test Case Documenter
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+A production-grade QA test management platform for organizing projects, authoring test cases, executing validations, attaching screenshot evidence, and generating audit-ready PDF, Word, CSV, and JSON reports.
+
+- GitHub: https://github.com/Navadeep-maganti/Test_case_documenter
+- Live: https://test-case-documenter.vercel.app/
+- Stack: Next.js, React 19, Prisma, PostgreSQL, NextAuth, PDF/DOCX export
+
+### University Placement Portal
+
+A secure full-stack placement management system with role-based access for students, recruiters, and placement administrators.
+
+- GitHub: https://github.com/Navadeep-maganti/Placement-Portal
+- Stack: React.js, Django, REST APIs, DBMS, JWT
+
+### Library Management Application
+
+A cross-platform Flutter application for searching, reserving, and tracking library books with responsive mobile workflows.
+
+- GitHub: https://github.com/Navadeep-maganti/library-book-reservation-app
+- Stack: Flutter, Dart, Firebase, State Management
+
+## Collaboration Ideas
+
+The Ideas page presents projects I am interested in building with collaborators:
+
+- HealthBridge: AI-powered preventive healthcare guidance
+- Health Intelligence Platform: privacy-focused lifelong medical records timeline
+- SafeCity AI: context-aware personal safety platform using AI and geospatial intelligence
+
+I am open to collaborating with builders interested in AI/ML, healthcare technology, mobile apps, backend systems, privacy engineering, and geospatial systems.
+
+## Tech Stack
+
+- React 19
+- TypeScript
+- Vite
+- React Router
+- Three.js and React Three Fiber
+- Framer Motion
+- Lucide React Icons
+- Vanilla CSS
+- Oxlint
+
+## Getting Started
+
+Install dependencies:
+
+```bash
+npm install
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+Start the development server:
+
+```bash
+npm run dev
+```
+
+Build for production:
+
+```bash
+npm run build
+```
+
+Preview the production build:
+
+```bash
+npm run preview
+```
+
+Run linting:
+
+```bash
+npm run lint
+```
+
+## Project Structure
+
+```text
+src/
+  components/        Reusable portfolio sections and UI components
+  data/              Portfolio content and project data
+  assets/            Local visual assets
+  App.tsx            Layout, routes, footer, and shared overlays
+  main.tsx           React Router and app bootstrap
+```
+
+## Contact
+
+- Email: magantinavadeep@gmail.com
+- LinkedIn: https://www.linkedin.com/in/navadeep-maganti-735250349/
+- GitHub: https://github.com/Navadeep-maganti
+- LeetCode: https://leetcode.com/u/NAVADEEP_MAGANTI/
