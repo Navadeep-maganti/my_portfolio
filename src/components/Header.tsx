@@ -137,6 +137,15 @@ export const Header: React.FC<HeaderProps> = ({ onOpenResume }) => {
 
       {/* Mobile Drawer Menu */}
       <div className={`mobile-drawer ${mobileMenuOpen ? 'open' : ''}`}>
+        <button
+          className="mobile-drawer-close"
+          onClick={() => setMobileMenuOpen(false)}
+          aria-label="Close navigation menu"
+          title="Close menu"
+        >
+          <X size={24} />
+        </button>
+
         <div className="mobile-drawer-content">
           <nav className="mobile-nav-links">
             <Link 
@@ -383,6 +392,27 @@ export const Header: React.FC<HeaderProps> = ({ onOpenResume }) => {
           opacity: 1;
           pointer-events: auto;
           transform: translateY(0);
+        }
+        .mobile-drawer-close {
+          position: absolute;
+          top: 18px;
+          right: 5%;
+          width: 42px;
+          height: 42px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: rgba(255, 255, 255, 0.06);
+          border: 1px solid var(--glass-border);
+          border-radius: 10px;
+          color: var(--text-primary);
+          cursor: pointer;
+          transition: var(--transition-fast);
+        }
+        .mobile-drawer-close:hover {
+          background: rgba(255, 255, 255, 0.12);
+          border-color: var(--accent-cyan);
+          color: var(--accent-cyan);
         }
         .mobile-drawer-content {
           display: flex;
