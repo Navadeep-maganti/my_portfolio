@@ -140,7 +140,7 @@ export const portfolioData: PortfolioData = {
       period: "Jun 2022 – May 2024",
       score: "973 / 1000 (97.3%)",
       scoreLabel: "Score",
-      location: "Vijayawada, AP",
+      location: "Anantapur, AP",
       highlights: [
         "Ranked top percentile in State Board Examinations",
         "Secured All India Rank (AIR) 14,707 in JEE Main 2024 among 1.4+ million candidates"

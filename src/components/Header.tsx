@@ -66,8 +66,12 @@ export const Header: React.FC<HeaderProps> = ({ onOpenResume }) => {
     if (mobileMenuOpen) {
       document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = 'auto';
+      document.body.style.overflow = '';
     }
+
+    return () => {
+      document.body.style.overflow = '';
+    };
   }, [mobileMenuOpen]);
 
   const getInitials = (fullName: string) => {
@@ -111,6 +115,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenResume }) => {
         {/* Header Right Actions */}
         <div className="header-actions">
           <button
+            type="button"
             onClick={onOpenResume}
             className="btn-resume"
             title="View Interactive Resume"
@@ -126,6 +131,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenResume }) => {
 
           {/* Mobile Hamburger Toggle */}
           <button 
+            type="button"
             className="mobile-menu-toggle"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle navigation menu"
@@ -138,6 +144,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenResume }) => {
       {/* Mobile Drawer Menu */}
       <div className={`mobile-drawer ${mobileMenuOpen ? 'open' : ''}`}>
         <button
+          type="button"
           className="mobile-drawer-close"
           onClick={() => setMobileMenuOpen(false)}
           aria-label="Close navigation menu"
@@ -169,6 +176,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenResume }) => {
 
           <div className="mobile-drawer-actions">
             <button
+              type="button"
               onClick={() => {
                 setMobileMenuOpen(false);
                 onOpenResume();
