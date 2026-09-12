@@ -13,12 +13,15 @@ export interface ProjectIdea {
   id: string;
   title: string;
   tagline: string;
-  description: string;
-  status: 'Exploring' | 'Prototyping' | 'Researching' | 'Open to Collaborators';
+  sector: string;
   category: 'Healthcare AI' | 'Health Data' | 'Safety Tech';
+  status: 'Stealth Concept' | 'Active Research' | 'Open for Discussion' | 'Prototyping';
+  problemSpace: string;
+  impact: string;
+  focusDomains: string[];
   tags: string[];
-  proposedArchitecture?: string;
-  lookingFor?: string;
+  collaborationScope?: string;
+  isProprietary?: boolean;
 }
 
 export interface Skill {
@@ -230,36 +233,45 @@ export const portfolioData: PortfolioData = {
   ideas: [
     {
       id: "healthbridge",
-      title: "HealthBridge - AI-Powered Preventive Healthcare Platform",
-      tagline: "A multilingual AI health companion for preventive guidance, symptom awareness, and everyday health decisions.",
+      title: "Healthcare & Applied AI Systems",
+      tagline: "Exploring intelligent software architectures to address scalability and user accessibility in the healthcare sector.",
+      sector: "Healthcare & Artificial Intelligence",
       category: "Healthcare AI",
-      status: "Open to Collaborators",
-      description: "HealthBridge is designed to make preventive healthcare more accessible by turning trusted medical knowledge into simple, personalized guidance. The platform would support AI-powered health education, symptom awareness, medication reminders, lifestyle recommendations, and early risk signals while keeping users informed without replacing professional medical care.",
-      proposedArchitecture: "Mobile/Web App + AI Guidance Layer + Multilingual Knowledge Base + Secure User Profiles",
-      lookingFor: "Collaborators interested in healthcare UX, AI safety, multilingual product design, medical knowledge systems, and backend engineering.",
-      tags: ["Healthcare AI", "Preventive Care", "Multilingual", "Health Education", "Mobile App"]
+      status: "Stealth Concept",
+      isProprietary: true,
+      problemSpace: "The healthcare ecosystem faces fundamental challenges in digital accessibility, system efficiency, and delivering scalable software solutions for users.",
+      impact: "Designing technology-driven solutions that improve usability, expand reach, and deliver meaningful value across modern digital health platforms.",
+      focusDomains: ["Healthcare Technology", "Applied AI", "System Accessibility"],
+      tags: ["Healthcare AI", "Applied AI", "System Design", "Health Tech"],
+      collaborationScope: "Open for discussions with domain mentors, researchers, and technical advisors under mutual alignment."
     },
     {
       id: "health-intelligence-platform",
-      title: "Health Intelligence Platform",
-      tagline: "A privacy-first lifelong health timeline that transforms scattered medical records into meaningful insights.",
+      title: "Data Systems & Privacy Engineering",
+      tagline: "Investigating resilient data architectures and privacy-preserving technologies for sensitive environments.",
+      sector: "Health Data Systems & Privacy",
       category: "Health Data",
-      status: "Researching",
-      description: "A secure platform where users can consolidate lab reports, prescriptions, scans, discharge summaries, and health records into one organized timeline. The system would extract structured information from unstructured documents, surface trends over time, and help patients understand their medical history through personalized, explainable analysis.",
-      proposedArchitecture: "Document Upload + OCR/NLP Pipeline + Encrypted Health Timeline + Insight Dashboard",
-      lookingFor: "Collaborators with interest in privacy engineering, OCR/NLP, medical document parsing, secure cloud architecture, and data visualization.",
-      tags: ["Health Records", "Privacy", "OCR", "NLP", "Data Visualization"]
+      status: "Active Research",
+      isProprietary: true,
+      problemSpace: "Managing high-value, sensitive domain data requires robust system architectures, stringent security guarantees, and user privacy safeguards.",
+      impact: "Advancing privacy-conscious data infrastructure and dependable computational systems for complex data ecosystems.",
+      focusDomains: ["Data Infrastructure", "Privacy Engineering", "System Security"],
+      tags: ["Data Systems", "Privacy", "Secure Infrastructure", "Software Architecture"],
+      collaborationScope: "Interested in technical exchanges on privacy engineering, secure backend systems, and data infrastructure."
     },
     {
       id: "safecity-ai",
-      title: "SafeCity AI",
-      tagline: "Context-aware personal safety assistance powered by AI, geospatial intelligence, and real-time signals.",
+      title: "Urban Technology & Geospatial Systems",
+      tagline: "Exploring computational intelligence and geospatial software to tackle challenges in urban environments.",
+      sector: "Urban Safety & Geospatial Systems",
       category: "Safety Tech",
-      status: "Open to Collaborators",
-      description: "SafeCity AI aims to move beyond conventional SOS apps by understanding travel context, location patterns, route risk, time of day, and real-time environmental signals. The platform would provide adaptive safety recommendations, trusted contact workflows, safer route suggestions, and privacy-conscious assistance before a situation becomes critical.",
-      proposedArchitecture: "Mobile App + Geospatial Risk Engine + AI Context Analysis + Real-Time Alert APIs",
-      lookingFor: "Looking for collaborators across AI/ML, mobile development, backend systems, and geospatial intelligence.",
-      tags: ["AI/ML", "Mobile", "Backend", "Geospatial", "Personal Safety"]
+      status: "Stealth Concept",
+      isProprietary: true,
+      problemSpace: "Rapidly evolving urban environments require scalable, reliable digital systems to improve situational awareness and public technology infrastructure.",
+      impact: "Leveraging modern software engineering and geospatial systems to deliver positive societal value and smart infrastructure at scale.",
+      focusDomains: ["Geospatial Systems", "Urban Infrastructure", "Intelligent Software"],
+      tags: ["Geospatial Tech", "Urban Systems", "Intelligent Infrastructure", "Scalable Systems"],
+      collaborationScope: "Open to discussing system design, mobile applications, and geospatial intelligence with builders."
     }
   ],
   experiences: [

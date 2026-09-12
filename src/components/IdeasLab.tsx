@@ -1,7 +1,17 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { portfolioData, type ProjectIdea } from '../data/portfolioData';
-import { Lightbulb, Users, ArrowRight, Sparkles, MessageSquareShare } from 'lucide-react';
+import { 
+  Lightbulb, 
+  ArrowRight, 
+  Sparkles, 
+  MessageSquareShare, 
+  Lock, 
+  ShieldCheck, 
+  Target, 
+  TrendingUp,
+  Layers
+} from 'lucide-react';
 
 export const IdeasLab: React.FC = () => {
   const { ideas, email } = portfolioData;
@@ -15,15 +25,15 @@ export const IdeasLab: React.FC = () => {
 
   const getStatusColor = (status: ProjectIdea['status']) => {
     switch (status) {
-      case 'Open to Collaborators':
-        return { bg: 'rgba(16, 185, 129, 0.12)', border: 'rgba(16, 185, 129, 0.35)', text: '#10b981' };
+      case 'Stealth Concept':
+        return { bg: 'rgba(168, 85, 247, 0.12)', border: 'rgba(168, 85, 247, 0.4)', text: '#c084fc', icon: '🔒' };
+      case 'Active Research':
+        return { bg: 'rgba(6, 182, 212, 0.12)', border: 'rgba(6, 182, 212, 0.4)', text: '#22d3ee', icon: '⚡' };
+      case 'Open for Discussion':
+        return { bg: 'rgba(16, 185, 129, 0.12)', border: 'rgba(16, 185, 129, 0.4)', text: '#34d399', icon: '🌱' };
       case 'Prototyping':
-        return { bg: 'rgba(6, 182, 212, 0.12)', border: 'rgba(6, 182, 212, 0.35)', text: '#06b6d4' };
-      case 'Researching':
-        return { bg: 'rgba(245, 158, 11, 0.12)', border: 'rgba(245, 158, 11, 0.35)', text: '#f59e0b' };
-      case 'Exploring':
       default:
-        return { bg: 'rgba(139, 92, 246, 0.12)', border: 'rgba(139, 92, 246, 0.35)', text: '#8b5cf6' };
+        return { bg: 'rgba(245, 158, 11, 0.12)', border: 'rgba(245, 158, 11, 0.4)', text: '#fbbf24', icon: '🔬' };
     }
   };
 
@@ -32,25 +42,32 @@ export const IdeasLab: React.FC = () => {
       <div className="section-header">
         <span className="section-tag">
           <Lightbulb size={13} />
-          <span>Ideas Open For Collaboration</span>
+          <span>Concepts & Research Initiatives</span>
         </span>
-        <h2 className="gradient-text">Ideas I Want To Build</h2>
-        <p>I have a few product and engineering ideas in mind. Each one has a short direction, and interested builders can connect with me to discuss, refine, or collaborate.</p>
+        <h2 className="gradient-text">Problem Spaces & Sector Opportunities</h2>
+        <p>
+          High-level overview of real-world domains and impact areas I am actively investigating. 
+          To protect intellectual property, proprietary system architectures and deep technical implementations are kept private and shared selectively with mentors, researchers, and potential collaborators.
+        </p>
       </div>
 
-      {/* Prominent Open Collaboration Banner */}
-      <div className="glass-card collab-banner">
-        <div className="collab-icon-box">
-          <Users size={24} className="collab-icon" />
+      {/* Stealth & IP Protection Notice Banner */}
+      <div className="glass-card stealth-banner">
+        <div className="stealth-banner-icon">
+          <ShieldCheck size={26} />
         </div>
-        <div className="collab-text">
-          <h3>Open for collaborations</h3>
+        <div className="stealth-banner-text">
+          <div className="stealth-banner-title">
+            <span>Intellectual Property & Stealth R&D Notice</span>
+            <span className="stealth-badge">Protected Concepts</span>
+          </div>
           <p>
-            If any idea below feels interesting, I would love to hear your perspective. You can share suggestions, help shape the scope, or team up with me to turn it into a real project.
+            The cards below outline the <strong>domain challenges</strong> and <strong>projected real-world impact</strong> of my ideas. 
+            Full technical specifications, data pipelines, and system architectures remain proprietary. If you are a founder, researcher, or mentor interested in exploring one of these sectors together, let's connect.
           </p>
         </div>
         <Link to="/contact" className="btn-primary collab-btn">
-          <span>Connect With Me</span>
+          <span>Discuss Under NDA</span>
           <ArrowRight size={16} />
         </Link>
       </div>
@@ -72,13 +89,16 @@ export const IdeasLab: React.FC = () => {
       <div className="ideas-grid">
         {filteredIdeas.map((idea) => {
           const statusStyle = getStatusColor(idea.status);
-          const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(`Collaboration on: ${idea.title}`)}&body=${encodeURIComponent(`Hi Navadeep,\n\nI saw your idea "${idea.title}" on your portfolio and would like to share some insights / discuss collaborating on it.\n\n`)}`;
+          const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(`Sector Inquiry: ${idea.title}`)}&body=${encodeURIComponent(`Hi Navadeep,\n\nI came across your concept "${idea.title}" in the ${idea.sector} domain on your portfolio.\n\nI'd like to discuss the problem space, share insights, or explore collaboration under mutual alignment.\n\nBest regards,`)}`;
 
           return (
             <div key={idea.id} className="glass-card idea-card">
-              {/* Header: Category + Status */}
+              {/* Header: Sector Tag + Status Badge */}
               <div className="idea-header">
-                <span className="idea-category">{idea.category}</span>
+                <span className="idea-sector-tag">
+                  <Layers size={13} className="sector-icon" />
+                  <span>{idea.sector}</span>
+                </span>
                 <span 
                   className="idea-status-pill"
                   style={{
@@ -92,25 +112,57 @@ export const IdeasLab: React.FC = () => {
                 </span>
               </div>
 
-              {/* Title & Tagline */}
+              {/* Title & Vision Tagline */}
               <div className="idea-content">
                 <h3 className="idea-title">{idea.title}</h3>
                 <p className="idea-tagline">{idea.tagline}</p>
-                <p className="idea-description">{idea.description}</p>
 
-                {idea.proposedArchitecture && (
-                  <div className="idea-stack">
-                    {idea.proposedArchitecture}
+                {/* Problem Space Block */}
+                <div className="idea-meta-block problem-block">
+                  <div className="meta-block-title">
+                    <Target size={14} className="meta-icon-cyan" />
+                    <span>Industry Challenge & Problem Space</span>
+                  </div>
+                  <p className="meta-block-body">{idea.problemSpace}</p>
+                </div>
+
+                {/* Projected Impact Block */}
+                <div className="idea-meta-block impact-block">
+                  <div className="meta-block-title">
+                    <TrendingUp size={14} className="meta-icon-emerald" />
+                    <span>Projected Impact & Value</span>
+                  </div>
+                  <p className="meta-block-body impact-text">{idea.impact}</p>
+                </div>
+
+                {/* Broad Domain Tags */}
+                {idea.focusDomains && idea.focusDomains.length > 0 && (
+                  <div className="focus-domains-wrapper">
+                    <span className="focus-label">Sector Focus:</span>
+                    <div className="focus-chips">
+                      {idea.focusDomains.map((domain) => (
+                        <span key={domain} className="focus-chip">
+                          {domain}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 )}
 
-                {idea.lookingFor && (
-                  <div className="idea-meta-block looking-for">
+                {/* Confidential Notice Pill */}
+                <div className="idea-stealth-notice">
+                  <Lock size={12} className="lock-icon" />
+                  <span>Concept Blueprint & Architecture: <strong>Private (Stealth Mode)</strong></span>
+                </div>
+
+                {/* Collaboration Scope */}
+                {idea.collaborationScope && (
+                  <div className="idea-meta-block collab-scope-block">
                     <div className="meta-block-title">
-                      <Sparkles size={14} className="meta-icon-gold" />
-                      <span>Collaboration Direction</span>
+                      <Sparkles size={13} className="meta-icon-gold" />
+                      <span>Collaboration Scope</span>
                     </div>
-                    <p className="meta-block-body">{idea.lookingFor}</p>
+                    <p className="meta-block-body">{idea.collaborationScope}</p>
                   </div>
                 )}
               </div>
@@ -126,10 +178,10 @@ export const IdeasLab: React.FC = () => {
                 <a 
                   href={mailtoLink}
                   className="idea-discuss-btn"
-                  title="Send an email to discuss this idea"
+                  title="Send an email to discuss this sector"
                 >
                   <MessageSquareShare size={15} />
-                  <span>Discuss Collaboration</span>
+                  <span>Connect On This Sector</span>
                 </a>
               </div>
             </div>
@@ -144,47 +196,69 @@ export const IdeasLab: React.FC = () => {
           gap: 35px;
         }
 
-        /* Collab Banner */
-        .collab-banner {
+        /* Stealth Banner */
+        .stealth-banner {
           display: flex;
           align-items: center;
           gap: 22px;
           padding: 24px 30px;
-          border-color: rgba(6, 182, 212, 0.3);
-          background: linear-gradient(135deg, rgba(6, 182, 212, 0.08) 0%, rgba(139, 92, 246, 0.08) 100%);
+          border-color: rgba(168, 85, 247, 0.3);
+          background: linear-gradient(135deg, rgba(168, 85, 247, 0.08) 0%, rgba(6, 182, 212, 0.06) 100%);
+          border-radius: 16px;
         }
-        .collab-icon-box {
+        .stealth-banner-icon {
           padding: 14px;
           border-radius: 14px;
-          background: rgba(6, 182, 212, 0.12);
-          border: 1px solid rgba(6, 182, 212, 0.25);
-          color: var(--accent-cyan);
+          background: rgba(168, 85, 247, 0.12);
+          border: 1px solid rgba(168, 85, 247, 0.3);
+          color: #c084fc;
           display: flex;
           align-items: center;
           justify-content: center;
           flex-shrink: 0;
         }
-        .collab-text {
+        .stealth-banner-text {
           flex-grow: 1;
           display: flex;
           flex-direction: column;
-          gap: 4px;
+          gap: 6px;
         }
-        .collab-text h3 {
-          font-size: 1.25rem;
+        .stealth-banner-title {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          flex-wrap: wrap;
+          font-size: 1.15rem;
+          font-weight: 600;
           color: var(--text-primary);
+          font-family: var(--font-display);
         }
-        .collab-text p {
+        .stealth-badge {
+          font-size: 0.72rem;
+          font-family: var(--font-mono);
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+          background: rgba(168, 85, 247, 0.2);
+          color: #e9d5ff;
+          border: 1px solid rgba(168, 85, 247, 0.4);
+          padding: 2px 8px;
+          border-radius: 4px;
+        }
+        .stealth-banner-text p {
           color: var(--text-secondary);
-          font-size: 0.94rem;
-          line-height: 1.5;
+          font-size: 0.92rem;
+          line-height: 1.55;
+          margin: 0;
+        }
+        .stealth-banner-text strong {
+          color: var(--text-primary);
         }
         .collab-btn {
           flex-shrink: 0;
           white-space: nowrap;
         }
         @media (max-width: 900px) {
-          .collab-banner {
+          .stealth-banner {
             flex-direction: column;
             align-items: flex-start;
             gap: 16px;
@@ -207,7 +281,7 @@ export const IdeasLab: React.FC = () => {
           background: rgba(255, 255, 255, 0.03);
           border: 1px solid var(--glass-border);
           color: var(--text-secondary);
-          padding: 6px 16px;
+          padding: 7px 18px;
           border-radius: 999px;
           font-size: 0.86rem;
           font-family: var(--font-display);
@@ -219,7 +293,7 @@ export const IdeasLab: React.FC = () => {
           background: var(--accent-purple);
           color: #fff;
           border-color: var(--accent-purple);
-          box-shadow: 0 0 14px var(--accent-purple-glow);
+          box-shadow: 0 0 16px var(--accent-purple-glow);
         }
 
         /* Ideas Grid */
@@ -238,24 +312,40 @@ export const IdeasLab: React.FC = () => {
           flex-direction: column;
           justify-content: space-between;
           height: 100%;
-          min-height: 340px;
+          min-height: 400px;
           gap: 20px;
           background: var(--bg-card);
+          border: 1px solid var(--glass-border);
+          padding: 24px;
+          border-radius: 16px;
+          transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+        }
+        .idea-card:hover {
+          transform: translateY(-4px);
+          border-color: rgba(6, 182, 212, 0.35);
+          box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
         }
         .idea-header {
           display: flex;
           justify-content: space-between;
           align-items: center;
           gap: 10px;
+          flex-wrap: wrap;
         }
-        .idea-category {
+        .idea-sector-tag {
           font-family: var(--font-mono);
           font-size: 0.78rem;
-          color: var(--text-muted);
-          background: rgba(255, 255, 255, 0.03);
-          border: 1px solid var(--glass-border);
-          padding: 3px 10px;
+          color: var(--accent-cyan);
+          background: rgba(6, 182, 212, 0.08);
+          border: 1px solid rgba(6, 182, 212, 0.25);
+          padding: 4px 10px;
           border-radius: 6px;
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+        }
+        .sector-icon {
+          color: var(--accent-cyan);
         }
         .idea-status-pill {
           display: inline-flex;
@@ -278,73 +368,125 @@ export const IdeasLab: React.FC = () => {
         .idea-content {
           display: flex;
           flex-direction: column;
-          gap: 10px;
+          gap: 14px;
           flex-grow: 1;
         }
         .idea-title {
           font-size: 1.3rem;
           color: var(--text-primary);
-          line-height: 1.3;
+          line-height: 1.35;
+          font-family: var(--font-display);
+          font-weight: 700;
         }
         .idea-tagline {
           font-size: 0.92rem;
           color: var(--accent-cyan);
           font-weight: 500;
-        }
-        .idea-description {
-          font-size: 0.92rem;
-          color: var(--text-secondary);
-          line-height: 1.6;
-        }
-        .idea-stack {
-          display: inline-flex;
-          width: fit-content;
-          max-width: 100%;
-          color: var(--accent-cyan);
-          background: rgba(6, 182, 212, 0.08);
-          border: 1px solid rgba(6, 182, 212, 0.18);
-          border-radius: 6px;
-          padding: 5px 10px;
-          font-family: var(--font-mono);
-          font-size: 0.78rem;
-          line-height: 1.4;
+          line-height: 1.45;
         }
 
         .idea-meta-block {
-          background: rgba(0, 0, 0, 0.25);
-          border: 1px solid rgba(255, 255, 255, 0.04);
-          border-radius: 8px;
-          padding: 10px 12px;
+          background: rgba(0, 0, 0, 0.3);
+          border: 1px solid rgba(255, 255, 255, 0.05);
+          border-radius: 10px;
+          padding: 12px 14px;
           display: flex;
           flex-direction: column;
-          gap: 4px;
+          gap: 5px;
         }
+        .problem-block {
+          border-left: 3px solid rgba(6, 182, 212, 0.6);
+        }
+        .impact-block {
+          background: linear-gradient(135deg, rgba(16, 185, 129, 0.06) 0%, rgba(0, 0, 0, 0.3) 100%);
+          border-left: 3px solid rgba(16, 185, 129, 0.7);
+        }
+        .collab-scope-block {
+          background: rgba(251, 191, 36, 0.04);
+          border-left: 3px solid rgba(251, 191, 36, 0.5);
+        }
+
         .meta-block-title {
           display: flex;
           align-items: center;
-          gap: 6px;
-          font-size: 0.78rem;
+          gap: 7px;
+          font-size: 0.75rem;
           font-family: var(--font-mono);
           text-transform: uppercase;
-          letter-spacing: 0.05em;
+          letter-spacing: 0.06em;
           color: var(--text-muted);
         }
-        .meta-icon {
-          color: var(--accent-purple);
+        .meta-icon-cyan {
+          color: var(--accent-cyan);
+        }
+        .meta-icon-emerald {
+          color: #34d399;
         }
         .meta-icon-gold {
           color: #fbbf24;
         }
         .meta-block-body {
-          font-size: 0.86rem;
+          font-size: 0.88rem;
           color: var(--text-secondary);
-          line-height: 1.45;
+          line-height: 1.5;
+          margin: 0;
+        }
+        .impact-text {
+          color: #e2e8f0;
+          font-weight: 500;
+        }
+
+        .focus-domains-wrapper {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          flex-wrap: wrap;
+        }
+        .focus-label {
+          font-size: 0.76rem;
+          font-family: var(--font-mono);
+          color: var(--text-muted);
+          text-transform: uppercase;
+          letter-spacing: 0.04em;
+        }
+        .focus-chips {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 6px;
+        }
+        .focus-chip {
+          font-size: 0.75rem;
+          background: rgba(255, 255, 255, 0.04);
+          border: 1px solid rgba(255, 255, 255, 0.08);
+          color: var(--text-secondary);
+          padding: 2px 8px;
+          border-radius: 4px;
+        }
+
+        .idea-stealth-notice {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          background: rgba(168, 85, 247, 0.07);
+          border: 1px dashed rgba(168, 85, 247, 0.35);
+          color: #d8b4fe;
+          border-radius: 8px;
+          padding: 8px 12px;
+          font-size: 0.78rem;
+          font-family: var(--font-mono);
+        }
+        .lock-icon {
+          flex-shrink: 0;
+          color: #c084fc;
+        }
+        .idea-stealth-notice strong {
+          color: #f3e8ff;
         }
 
         .idea-footer {
           display: flex;
           flex-direction: column;
-          gap: 12px;
+          gap: 14px;
           margin-top: 6px;
         }
         .idea-tags {
@@ -353,7 +495,7 @@ export const IdeasLab: React.FC = () => {
           gap: 6px;
         }
         .tag-pill {
-          font-size: 0.76rem;
+          font-size: 0.74rem;
           font-family: var(--font-mono);
           background: rgba(255, 255, 255, 0.02);
           border: 1px solid var(--glass-border);
@@ -366,29 +508,30 @@ export const IdeasLab: React.FC = () => {
           align-items: center;
           justify-content: center;
           gap: 8px;
-          background: rgba(139, 92, 246, 0.08);
-          border: 1px solid rgba(139, 92, 246, 0.25);
+          background: linear-gradient(135deg, rgba(6, 182, 212, 0.12) 0%, rgba(139, 92, 246, 0.12) 100%);
+          border: 1px solid rgba(6, 182, 212, 0.3);
           color: var(--text-primary);
-          padding: 9px 14px;
-          border-radius: 8px;
-          font-size: 0.86rem;
+          padding: 10px 16px;
+          border-radius: 10px;
+          font-size: 0.88rem;
           font-family: var(--font-display);
           font-weight: 500;
           text-decoration: none;
           transition: var(--transition-fast);
         }
         .idea-discuss-btn:hover {
-          background: rgba(139, 92, 246, 0.2);
-          border-color: var(--accent-purple);
+          background: linear-gradient(135deg, rgba(6, 182, 212, 0.25) 0%, rgba(139, 92, 246, 0.25) 100%);
+          border-color: var(--accent-cyan);
           color: #fff;
-          box-shadow: 0 0 14px var(--accent-purple-glow);
+          box-shadow: 0 0 16px rgba(6, 182, 212, 0.35);
+          transform: translateY(-2px);
         }
         .ideas-section::after {
           content: "";
           display: block;
           width: 100%;
           max-width: 680px;
-          margin: 6px auto 0;
+          margin: 10px auto 0;
           height: 1px;
           background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.35), transparent);
         }
